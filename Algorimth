@@ -14,8 +14,11 @@ int main()
 		exit(EXIT_FAILURE);
 	}
     amic_pair_check(num1, num2);
+    return 0;
 }
-int is_prime(int num) {
+
+int
+is_prime(int num) {
 	int i, prime = 1;
 	for(i=2; i*i<=num; i++) {
 		if((num/i)==0) {
@@ -29,31 +32,30 @@ int is_prime(int num) {
 void
 amic_pair_check(int a, int b){
 	int divisor, total1=1, total2=1;
-	int TorF = 1;
-	
+
 	if(is_prime(a)==0 || is_prime(b)==0){
 		printf("a: %d or b: %d is prime\n", a, b);
 		return;
 	}
-	TorF = 0;
 	
 	for(divisor=2; divisor*divisor <= a; divisor++){
-		if(a/divisor==0){
+		if(a%divisor==0){
 			total1 += divisor;
 			total1 += a/divisor;
 		}
 	}
 	for(divisor=2; divisor*divisor <= b; divisor++){
-		if(b/divisor==0){
+		if(b%divisor==0){
 			total2 += divisor;
 			total2 += b/divisor;
 		}
 	}
-	if (total1 != total2){
-		printf("not vaild");
+	if (total1==b && total2==a){
+		printf("they are pair, a: %d, total1: %d, b: %d, total2: %d", a, total1, b, total2);
 		return;
 	}else{
-	printf("they are pair and their value is %d, total1);
+	    printf("they are not valid, and total1:%d," 
+	    "total2:%d",total1, total2);
 	}
 		
 }
