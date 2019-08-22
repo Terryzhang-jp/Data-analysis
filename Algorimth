@@ -3,16 +3,17 @@
 #include<stdlib.h>
 
 int is_prime(int num);
-int amic_pair_check(int a, int b);
+void amic_pair_check(int a, int b);
 
 int main()
 {
-    int num1=123, num2=235;
-    int am;
-    
-    am = amic_pair_check(num1, num2);
-    printf("am:%d", am);
-    return 0;
+    int num1, num2;
+    printf("Enter a numbers: ");
+	if (scanf("%d,%d", &num1, &num2) != 2) {
+		printf("Incorrect input\n");
+		exit(EXIT_FAILURE);
+	}
+    amic_pair_check(num1, num2);
 }
 int is_prime(int num) {
 	int i, prime = 1;
@@ -25,14 +26,14 @@ int is_prime(int num) {
 	return prime;
 	}
 	
-int
+void
 amic_pair_check(int a, int b){
 	int divisor, total1=1, total2=1;
 	int TorF = 1;
 	
 	if(is_prime(a)==0 || is_prime(b)==0){
 		printf("a: %d or b: %d is prime\n", a, b);
-		return 0;
+		return;
 	}
 	TorF = 0;
 	
@@ -49,9 +50,10 @@ amic_pair_check(int a, int b){
 		}
 	}
 	if (total1 != total2){
-		TorF = 0;
 		printf("not vaild");
-		return 0;
+		return;
+	}else{
+	printf("they are pair and their value is %d, total1);
 	}
-	return a;
+		
 }
