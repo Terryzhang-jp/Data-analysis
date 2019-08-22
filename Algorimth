@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+#include<stdlib.h>
+
+int is_prime(int num);
+int amic_pair_check(int a, int b);
+
+int main()
+{
+    int num1=123, num2=235;
+    int am;
+    
+    am = amic_pair_check(num1, num2);
+    printf("am:%d", am);
+    return 0;
+}
+int is_prime(int num) {
+	int i, prime = 1;
+	for(i=2; i*i<=num; i++) {
+		if((num/i)==0) {
+			prime = 0;
+			break;
+		}			
+	}
+	return prime;
+	}
+	
+int
+amic_pair_check(int a, int b){
+	int divisor, total1=1, total2=1;
+	int TorF = 1;
+	
+	if(is_prime(a)==0 || is_prime(b)==0){
+		printf("a: %d or b: %d is prime\n", a, b);
+		return 0;
+	}
+	TorF = 0;
+	
+	for(divisor=2; divisor*divisor <= a; divisor++){
+		if(a/divisor==0){
+			total1 += divisor;
+			total1 += a/divisor;
+		}
+	}
+	for(divisor=2; divisor*divisor <= b; divisor++){
+		if(b/divisor==0){
+			total2 += divisor;
+			total2 += b/divisor;
+		}
+	}
+	if (total1 != total2){
+		TorF = 0;
+		printf("not vaild");
+		return 0;
+	}
+	return a;
+}
